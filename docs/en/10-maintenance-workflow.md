@@ -12,9 +12,21 @@ daily note
   -> README link if it becomes a major topic
 ```
 
+## Language Rule
+
+Canonical docs are English.
+
+Japanese content is intentionally lighter:
+
+- `README.ja.md` for the Japanese entrypoint
+- `docs/ja/` for summaries, not full translations
+- `daily/ja/` for frequent Japanese operation notes
+
+Do not maintain full parallel English and Japanese translations unless a page becomes important enough to justify it.
+
 ## Daily Note Rule
 
-Use `daily/TEMPLATE.md` for rough findings.
+Use `daily/TEMPLATE.md` or `daily/ja/TEMPLATE.md` for rough findings.
 
 Daily notes should contain:
 
@@ -36,7 +48,7 @@ Daily notes should not contain:
 
 ## Promotion Rule
 
-Promote a daily note to `docs/` when it becomes reusable.
+Promote a daily note to `docs/en/` when it becomes reusable.
 
 Reusable means at least one of these is true:
 
@@ -48,12 +60,12 @@ Reusable means at least one of these is true:
 
 ## Writing Style
 
-- Prefer field notes over polished marketing text
-- State the failure layer clearly
-- Separate observation from assessment
-- Include sanitized evidence
-- Use public role names only
-- Keep product-specific preference practical, not absolute
+- prefer field notes over marketing text
+- state the failure layer clearly
+- separate observation from assessment
+- include sanitized evidence
+- use public role names only
+- keep product-specific preferences practical, not absolute
 
 ## Versioning
 

@@ -7,3 +7,5 @@
 - Add heartbeat, auth profile, dashboard, security boundary, Node wrapper, remediation, and tunnel notes.
 - Add example notification and state-format notes.
 - Keep the repository docs-only and exclude executable operational tooling.
+- Make English the canonical documentation language.
+- Add Japanese entrypoints and daily note templates without full translation maintenance.

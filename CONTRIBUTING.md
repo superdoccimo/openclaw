@@ -25,3 +25,5 @@ example notification
 If the note is still rough, add it as a daily note first. Promote it to stable docs after the pattern repeats or becomes reusable.
 
 Executable scripts, private operational tools, and raw run output should not be added to this repository. Describe the pattern, boundary, and verification method in Markdown instead.
+
+The canonical docs live in `docs/en/`. Japanese notes are welcome in `daily/ja/`, and Japanese summaries can live in `docs/ja/`, but full parallel translation is not required.

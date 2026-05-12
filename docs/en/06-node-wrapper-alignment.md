@@ -1,8 +1,8 @@
 # Node Wrapper Alignment
 
-OpenClaw / Hermes / OH / dashboard は、Node、npm、nvm、systemd、wrapper の影響を強く受けます。
+OpenClaw, Hermes, OH, and dashboards are strongly affected by Node, npm, nvm, systemd, and wrappers.
 
-人間の shell では新しい Node を使っていても、systemd service や wrapper が古い binary を固定していることがあります。その結果、doctor、gateway、dashboard、heartbeat の表示が矛盾します。
+The interactive shell may use a new Node version while a systemd service or wrapper still pins an old binary. That creates contradictory doctor, gateway, dashboard, and heartbeat output.
 
 ## Common Failure Shape
 
@@ -17,7 +17,7 @@ wrapper:
   openclaw -> /opt/old-openclaw/bin/openclaw
 ```
 
-この場合、更新したつもりでも実運用では古い CLI が起動します。
+In this state, the operator may believe OpenClaw was updated, while production still starts the old CLI.
 
 ## Read-Only Checks
 
@@ -34,20 +34,20 @@ systemctl --user show openclaw-gateway.service -p Environment -p ExecStart
 
 ## What To Compare
 
-- interactive shell の `node`
-- systemd user service の `ExecStart`
-- wrapper 内で固定された path
+- interactive shell `node`
+- systemd user service `ExecStart`
+- wrapper-pinned paths
 - `openclaw --version`
 - `openclaw doctor`
 - gateway journal
-- dashboard process の actual command
+- actual dashboard process command
 
 ## Recommended Practice
 
-- wrapper を使うなら、どの Node / OpenClaw を呼ぶか明示する
-- 更新後に wrapper と systemd の実体を read-only で確認する
-- dashboard には `expected` と `actual` を分けて表示する
-- mismatch は `WARNING` として扱う
+- if a wrapper is used, make the Node and OpenClaw path explicit
+- after updates, verify wrapper and systemd targets read-only
+- show `expected` and `actual` separately on dashboards
+- treat mismatch as `WARNING`
 
 ## Example Assessment
 

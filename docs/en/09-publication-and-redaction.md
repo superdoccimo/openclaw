@@ -1,6 +1,6 @@
 # Publication And Redaction
 
-公開前に、個人情報、secret、実環境の情報を取り除きます。
+Remove personal, secret, and environment-specific details before publishing.
 
 ## Replace Personal Agent Names
 
@@ -18,7 +18,7 @@
 | --- | --- |
 | actual domain | `example.com` or `redacted-domain` |
 | actual host | `host-a`, `app-host-a`, `proxy-host-a` |
-| actual private IP | `10.0.0.10` style placeholder only when needed |
+| actual private IP | placeholder only when needed |
 | actual path | `/opt/openclaw-ops/...` |
 | actual account | `<account>` |
 | actual profile | `openai-codex:<account>` |

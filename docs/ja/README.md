@@ -1,0 +1,28 @@
+# 日本語概要
+
+このディレクトリは、日本語の短い入口と要約を置く場所です。
+
+正式な本体ドキュメントは [docs/en/](../en/) です。ここでは全文翻訳を維持しません。更新頻度が高いため、完全な日英同期よりも、発見を早く安全に残すことを優先します。
+
+## 読む順番
+
+1. [README.ja.md](../../README.ja.md) で全体像を見る
+2. [docs/en/00-overview.md](../en/00-overview.md) で英語の本体に進む
+3. 日々の運用メモは [daily/ja/](../../daily/ja/) に残す
+
+## このリポジトリで扱うこと
+
+- 複数 OpenClaw の責務分離
+- heartbeat と安全判定の分離
+- auth profile と gateway restart
+- dashboard 自己DoS
+- security agent の境界
+- Node / wrapper / systemd のズレ
+- Cloudflare Tunnel や private mesh を含む access layer
+- 公開前の redaction
+
+## 方針
+
+英語を canonical docs にします。
+
+日本語は、入口、要約、daily note を中心にします。安定した知見だけ、必要に応じて日本語でも短く整理します。
