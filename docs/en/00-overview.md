@@ -21,6 +21,10 @@ This repository does not treat OpenClaw as a cron replacement.
 
 Operational health should not be inferred from exit codes alone. A useful operator view combines doctor output, status, auth profile state, journal evidence, dashboard state, remote checks, daily logs, and human-readable assessment.
 
+It also does not treat a public repository as a place to publish private automation wholesale. The public value is the operating model: how symptoms are separated by layer, how a fix is verified, how rollback remains possible, and how the finding becomes a reusable note.
+
+When a private script matters, document its purpose and boundaries rather than its exact contents. A good public note should let another operator recognize the failure pattern without exposing the original environment.
+
 ## Target Reader
 
 - operators running multiple OpenClaw agents or roles

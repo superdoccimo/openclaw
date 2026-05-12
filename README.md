@@ -6,6 +6,14 @@ This repository is not the official OpenClaw project. It collects field-tested n
 
 This is not a beginner installation guide. It focuses on operational reality: gateway state, auth profiles, heartbeat design, dashboard load, systemd services, SSH-based checks, Hermes / OH handoffs, safe autonomous remediation, daily logs, and review loops.
 
+## Relationship To Official Docs
+
+Use the official OpenClaw documentation as the source of truth for product behavior, installation, command syntax, and supported configuration.
+
+Use this repository for the parts that only become obvious after operating multiple agents for a while: which layer failed, what evidence was useful, how to avoid repeating the incident, and how to document the recovery without publishing private environment details.
+
+The goal is not to mirror official documentation. The goal is to preserve field-tested operating judgment.
+
 ## Languages
 
 The canonical documentation is written in English.
@@ -80,6 +88,8 @@ The important boundary is to keep the access layer separate from the OpenClaw la
 This repository is docs-only for now. Executable scripts, private wrappers, raw command output, and production logs are intentionally kept out of the public repository.
 
 When a tool or script becomes relevant, describe the operational pattern, safety boundary, dry-run expectation, rollback expectation, and verification method in Markdown.
+
+Documentation alone is a useful artifact. In multi-agent operations, the reusable value is often the decision structure rather than the private script that implemented it once.
 
 ## Security And Redaction
 

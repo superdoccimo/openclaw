@@ -2,6 +2,10 @@
 
 Remove personal, secret, and environment-specific details before publishing.
 
+The safest public material usually preserves structure, not values. Keep the role, failure mode, decision rule, rollback expectation, and verification method. Remove the original names, tokens, domains, private IPs, channel IDs, paths, and raw logs.
+
+This matters because operational notes often include exactly the evidence that made the incident understandable. That evidence is useful, but the public version should describe the type of evidence rather than copy the private artifact.
+
 ## Replace Personal Agent Names
 
 | Private concept | Public replacement |
@@ -39,6 +43,33 @@ Remove personal, secret, and environment-specific details before publishing.
 - process argv that contains secret values
 - executable operational scripts
 - raw command output copied from production hosts
+
+## Publish The Pattern
+
+Prefer this shape:
+
+```text
+Symptom: dashboard reports OpenClaw unhealthy while CLI status is healthy
+Likely layer: gateway service, wrapper path, auth profile, or dashboard cache
+Evidence to collect: service status, configured entrypoint, CLI version, gateway status, recent journal
+Safe action: read-only diagnosis first; backup before changing wrapper or service files
+Verification: CLI and gateway report the same version and the service remains active after restart
+```
+
+Avoid this shape:
+
+```text
+Full private command transcript with real hostnames, tokens, channel IDs, absolute private paths, and raw logs
+```
+
+If a script is important, publish the diagnostic contract instead of the script:
+
+- what it checks
+- what it never changes
+- what status labels it returns
+- what a warning means
+- how to verify the warning manually
+- how to roll back any separate remediation step
 
 ## Safer Search Before Commit
 
