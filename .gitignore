@@ -1,0 +1,37 @@
+# Private source notes and local drafts
+chatgpt.txt
+OpenClaw複数運用ナレッジ*.md
+private/
+drafts/
+*.local.md
+
+# Keep this repository docs-only
+tools/
+*.sh
+*.ps1
+*.bat
+*.cmd
+*.py
+*.js
+*.ts
+*.json
+
+# Secrets and credentials
+.env
+.env.*
+*.key
+*.pem
+*.p12
+*.pfx
+*.kubeconfig
+
+# Runtime output
+*.log
+logs/
+tmp/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
