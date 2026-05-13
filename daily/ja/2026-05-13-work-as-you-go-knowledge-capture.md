@@ -14,6 +14,7 @@
 - 整備後、research agent が初めて有用な chat 通知を出した。公開 GitHub repo と論文を参照し、coding agent の手順ギャップを checklist 化する小さな OSS 案として整理していた。
 - 同じ発見が research note、idea backlog、state file にも残っていたため、次回以降の heartbeat や review が継続できる状態になっていた。
 - peer から AG-UI dashboard を移植すると、動作はしても role が違うため UI が誤った evidence を見に行くことがある。research agent では `daily-log` より `research/`、security alert より durable note / backlog / public docs 化の可視化が重要だった。
+- Hermes review も同じで、CLI 側では週次レビューが生成・予定されていても、dashboard が `review-*` だけを探していると空に見える。scheduler の実ファイル名規約まで UI と合わせる必要がある。
 
 ## 誤解しやすかったこと
 
@@ -33,6 +34,7 @@
 - 対象 agent では heartbeat が短時間で silent OK になり、専用 session が見えていなかった。
 - 初回の有用通知では、対象、内容、案、保存先メモ、公開参考リンクが短く揃っていた。
 - AG-UI dashboard は loopback-only、role-specific title、research note directory、heartbeat state、events、OpenClaw session log を見る形に調整すると、問題発見用の evidence surface として使いやすくなった。
+- tunnel 経由で見える dashboard は、外側の access control と action token を別層で扱う。
 - 実 host 名、private IP、channel ID、token、raw log は載せない。
 
 ## 次に見る場所

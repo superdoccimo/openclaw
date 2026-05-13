@@ -17,11 +17,14 @@ At minimum, make these inputs role-specific:
 - heartbeat state path
 - event store path
 - daily or research note directory
+- review file naming convention
 - note label shown in the UI
 - command paths used by the service environment
 - action authentication policy
 
 Inherited defaults are a common source of false negatives. For example, a dashboard can say there are no daily notes simply because it is still reading a security agent's `daily-log` directory while the research agent writes to `research/`.
+
+The same problem can happen with review files. If the CLI or scheduler writes `weekly-review-YYYY-MM-DD.md` but the dashboard only searches for `review-YYYY-MM-DD.md`, the review panel will look empty even though the review mechanism is working.
 
 ## Useful Evidence
 
@@ -79,6 +82,7 @@ The API response should confirm, at least:
 - heartbeat state is readable
 - note count is non-zero when notes exist
 - the latest note filename matches the agent's actual output directory
+- the latest review filename matches the scheduler's real output convention
 
 If the UI is healthy but the evidence is empty, suspect a role mismatch before suspecting the agent.
 
