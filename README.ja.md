@@ -2,7 +2,7 @@
 
 このリポジトリは、複数の OpenClaw を長期運用するための非公式フィールドノートです。
 
-OpenClaw 本体のインストール手順ではありません。gateway、heartbeat、auth profile、dashboard、systemd、SSH 監視、Hermes / OH 連携、安全な自律修正、daily-log など、実運用で壊れやすい部分を整理します。
+OpenClaw 本体のインストール手順ではありません。gateway、heartbeat、auth profile、AG-UI dashboard、systemd、SSH 監視、Hermes / OH 連携、安全な自律修正、daily-log / research log など、実運用で壊れやすい部分を整理します。
 
 正式な本体ドキュメントは英語です。
 
@@ -16,7 +16,7 @@ OpenClaw 本体のインストール手順ではありません。gateway、hear
 OpenClaw 本体の仕様、install、command syntax、正式な config は公式 docs を正とします。
 
 このリポジトリは、公式 docs の代替ではありません。
-複数 OpenClaw を実際に動かした時に起きる、auth、gateway、dashboard、heartbeat、systemd、Node wrapper、remote access、redaction などの切り分け知見を残す場所です。
+複数 OpenClaw を実際に動かした時に起きる、auth、gateway、AG-UI dashboard、heartbeat、systemd、Node wrapper、remote access、redaction などの切り分け知見を残す場所です。
 
 公開版で残すべきなのは、private script や実値ではなく、判断構造です。
 「どの層を疑うか」「何を evidence とするか」「どこから rollback できるか」「何を公開してはいけないか」を残すだけでも十分価値があります。
