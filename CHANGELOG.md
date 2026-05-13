@@ -9,3 +9,4 @@
 - Keep the repository docs-only and exclude executable operational tooling.
 - Make English the canonical documentation language.
 - Add Japanese entrypoints and daily note templates without full translation maintenance.
+- Add a work-as-you-go knowledge capture guide and first sanitized Japanese daily note.

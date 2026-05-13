@@ -49,6 +49,8 @@ docs/
     08-remote-access-tunnels.md
     09-publication-and-redaction.md
     10-maintenance-workflow.md
+    11-work-as-you-go-knowledge-capture.md
+    12-autonomy-enablement.md
   ja/
     README.md
 examples/

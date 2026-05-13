@@ -10,6 +10,8 @@
 2. [docs/en/00-overview.md](../en/00-overview.md) で英語の本体に進む
 3. 日々の運用メモは [daily/ja/](../../daily/ja/) に残す
 
+作業中に出た知見をすぐ残す流れは [docs/en/11-work-as-you-go-knowledge-capture.md](../en/11-work-as-you-go-knowledge-capture.md) を参照してください。
+
 ## このリポジトリで扱うこと
 
 - 複数 OpenClaw の責務分離
