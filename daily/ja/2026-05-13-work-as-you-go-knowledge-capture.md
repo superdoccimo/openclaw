@@ -15,6 +15,7 @@
 - 同じ発見が research note、idea backlog、state file にも残っていたため、次回以降の heartbeat や review が継続できる状態になっていた。
 - peer から AG-UI dashboard を移植すると、動作はしても role が違うため UI が誤った evidence を見に行くことがある。research agent では `daily-log` より `research/`、security alert より durable note / backlog / public docs 化の可視化が重要だった。
 - Hermes review も同じで、CLI 側では週次レビューが生成・予定されていても、dashboard が `review-*` だけを探していると空に見える。scheduler の実ファイル名規約まで UI と合わせる必要がある。
+- まむさんの運用方針では、heartbeat は命令消化ではなく、agent と operator が対等な立場で短く状況を見る時間。公式仕様ではなく field policy として、目的・境界・証拠・残す成果物を共有する書き方が合う。
 
 ## 誤解しやすかったこと
 
@@ -35,6 +36,7 @@
 - 初回の有用通知では、対象、内容、案、保存先メモ、公開参考リンクが短く揃っていた。
 - AG-UI dashboard は loopback-only、role-specific title、research note directory、heartbeat state、events、OpenClaw session log を見る形に調整すると、問題発見用の evidence surface として使いやすくなった。
 - tunnel 経由で見える dashboard は、外側の access control と action token を別層で扱う。
+- heartbeat prompt は命令口調の task list に寄せすぎると、research agent が機械的な checker に寄りやすい。対等な共同観察として書くと、違和感や発見も成果物として残りやすい。
 - 実 host 名、private IP、channel ID、token、raw log は載せない。
 
 ## 次に見る場所

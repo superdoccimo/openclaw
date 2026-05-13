@@ -13,3 +13,4 @@
 - Add heartbeat timeout-budget guidance for separating channel/auth failures from isolated heartbeat runs.
 - Add AG-UI dashboard observability notes for role-specific dashboards and systemd environment checks.
 - Add Hermes review filename drift as an AG-UI dashboard false-negative pattern.
+- Add equal-standing heartbeat prompt style as an operator field policy.

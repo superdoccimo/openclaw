@@ -4,6 +4,31 @@ Heartbeat should not only answer "did the check run?"
 
 `exit 0` means the check completed. It does not prove the environment is safe or that the real production response path is working.
 
+## Operator Policy: Equal-Standing Heartbeats
+
+This is a field policy, not an OpenClaw product requirement.
+
+In this operating style, heartbeat is not treated as a command queue where a subordinate bot executes orders. It is treated as a short shared observation window between the operator and the agent.
+
+That changes how the heartbeat prompt is written. Prefer sharing purpose, boundaries, evidence sources, and desired durable artifacts over imperative task lists.
+
+For example:
+
+```text
+The heartbeat is a short shared observation window.
+Use the state file and recent notes as evidence.
+If something useful or strange appears, leave a short research note.
+If there is nothing useful to add, a quiet OK is enough.
+```
+
+Avoid turning the prompt into:
+
+```text
+Do A. Then do B. Then report C.
+```
+
+This matters because autonomy is partly shaped by the frame. A prompt that leaves room for judgment tends to produce better observations, especially for research agents. A prompt that only lists commands can collapse the agent into a mechanical checker.
+
 ## Separate Execution From Assessment
 
 Weak signal:
