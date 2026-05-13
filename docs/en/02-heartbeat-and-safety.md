@@ -48,9 +48,63 @@ next_action: repair auth order and restart gateway
 - whether the gateway service is active
 - whether auth order prioritizes the production profile
 - whether channel send/receive paths work
+- whether heartbeat timeout budget matches the work it is expected to do
 - whether dashboard APIs are too heavy or stale
 - whether tunnel / reverse proxy / private mesh access is reachable
 - whether recent journal entries show timeouts or credential errors
+
+## Timeout Budget Is A Separate Layer
+
+A timeout message does not automatically mean the channel, OAuth profile, or
+model is broken.
+
+Example symptom:
+
+```text
+Request timed out before a response was generated. Please try again, or
+increase agents.defaults.timeoutSeconds in your config.
+```
+
+Before raising the global timeout, check which runtime produced the timeout.
+
+Useful evidence:
+
+```bash
+openclaw models auth list
+openclaw models auth order get --provider openai-codex
+openclaw config get agents.defaults.heartbeat.timeoutSeconds
+systemctl --user status openclaw-gateway.service --no-pager
+journalctl --user -u openclaw-gateway.service --since "30 minutes ago" --no-pager
+```
+
+If the gateway log shows an embedded heartbeat run ending at a timeout such as
+`timeoutMs=240000`, compare that with
+`agents.defaults.heartbeat.timeoutSeconds`. A 240 second heartbeat budget can be
+too small once the heartbeat is expected to read events, reason about peer
+updates, inspect logs, and write a useful note.
+
+Prefer the narrowest fix:
+
+```bash
+openclaw config get agents.defaults.heartbeat.timeoutSeconds
+openclaw config set agents.defaults.heartbeat.timeoutSeconds 420 --strict-json --dry-run
+openclaw config set agents.defaults.heartbeat.timeoutSeconds 420 --strict-json
+openclaw config validate
+systemctl --user restart openclaw-gateway.service
+```
+
+Do not increase `agents.defaults.timeoutSeconds` first unless normal interactive
+chat turns are also timing out. Raising the global timeout can hide stuck runs,
+make channel feedback slower, and blur the difference between heartbeat work and
+human conversation.
+
+After the change, verify:
+
+- gateway reaches `ready`
+- event loop health returns to normal
+- the next heartbeat either completes or fails with a more specific cause
+- no token, refresh token, channel ID, host name, or raw production log was
+  copied into public notes
 
 ## What Heartbeat Should Avoid
 

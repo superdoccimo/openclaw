@@ -24,7 +24,7 @@ gateway log
 openclaw doctor
 openclaw status
 openclaw models auth list
-openclaw models auth order list --provider openai-codex
+openclaw models auth order get --provider openai-codex
 systemctl --user status openclaw-gateway.service --no-pager
 journalctl --user -u openclaw-gateway.service -n 100 --no-pager
 ```
@@ -41,7 +41,7 @@ systemctl --user restart openclaw-gateway.service
 Then verify the order, service state, journal, and channel response path.
 
 ```bash
-openclaw models auth order list --provider openai-codex
+openclaw models auth order get --provider openai-codex
 systemctl --user status openclaw-gateway.service --no-pager
 journalctl --user -u openclaw-gateway.service -n 100 --no-pager
 ```
