@@ -14,3 +14,4 @@
 - Add AG-UI dashboard observability notes for role-specific dashboards and systemd environment checks.
 - Add Hermes review filename drift as an AG-UI dashboard false-negative pattern.
 - Add equal-standing heartbeat prompt style as an operator field policy.
+- Add heartbeat insight policy notes for notification and quiet-decision review.

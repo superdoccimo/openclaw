@@ -16,6 +16,7 @@
 - peer から AG-UI dashboard を移植すると、動作はしても role が違うため UI が誤った evidence を見に行くことがある。research agent では `daily-log` より `research/`、security alert より durable note / backlog / public docs 化の可視化が重要だった。
 - Hermes review も同じで、CLI 側では週次レビューが生成・予定されていても、dashboard が `review-*` だけを探していると空に見える。scheduler の実ファイル名規約まで UI と合わせる必要がある。
 - まむさんの運用方針では、heartbeat は命令消化ではなく、agent と operator が対等な立場で短く状況を見る時間。公式仕様ではなく field policy として、目的・境界・証拠・残す成果物を共有する書き方が合う。
+- coding agent 周辺では autonomy そのものより、何を見ていつ割り込むかを評価する proactivity / insight policy の見方が出てきている。OpenClaw heartbeat も通知した理由だけでなく、通知しなかった理由を残せると週次レビューに効く。
 
 ## 誤解しやすかったこと
 
@@ -37,12 +38,14 @@
 - AG-UI dashboard は loopback-only、role-specific title、research note directory、heartbeat state、events、OpenClaw session log を見る形に調整すると、問題発見用の evidence surface として使いやすくなった。
 - tunnel 経由で見える dashboard は、外側の access control と action token を別層で扱う。
 - heartbeat prompt は命令口調の task list に寄せすぎると、research agent が機械的な checker に寄りやすい。対等な共同観察として書くと、違和感や発見も成果物として残りやすい。
+- insight policy は `notify | quiet | defer` くらいの小さい decision model から始めるのが良さそう。うるさいbotを避けるには、quiet decision も evidence として扱う。
 - 実 host 名、private IP、channel ID、token、raw log は載せない。
 
 ## 次に見る場所
 
 - `docs/en/11-work-as-you-go-knowledge-capture.md`
 - `docs/en/13-ag-ui-dashboard-observability.md`
+- `docs/en/14-heartbeat-insight-policy.md`
 - `docs/en/10-maintenance-workflow.md`
 - `docs/en/02-heartbeat-and-safety.md`
 - `docs/en/09-publication-and-redaction.md`

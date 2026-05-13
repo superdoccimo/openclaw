@@ -30,6 +30,7 @@ Japanese summaries and operation notes are available in [README.ja.md](README.ja
 - Node / npm / nvm / systemd / wrapper alignment
 - Remote access patterns such as Cloudflare Tunnel and private mesh networks
 - AG-UI dashboard observability and role-specific UI drift
+- Heartbeat insight policy for notification and quiet-decision quality
 - Human-readable notifications, daily logs, and sanitized evidence
 
 ## Repository Layout
@@ -53,6 +54,7 @@ docs/
     11-work-as-you-go-knowledge-capture.md
     12-autonomy-enablement.md
     13-ag-ui-dashboard-observability.md
+    14-heartbeat-insight-policy.md
   ja/
     README.md
 examples/
