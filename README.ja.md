@@ -19,6 +19,7 @@ OpenClaw 本体の仕様、install、command syntax、正式な config は公式
 複数 OpenClaw を実際に動かした時に起きる、auth、gateway、AG-UI dashboard、heartbeat、systemd、Node wrapper、remote access、redaction などの切り分け知見を残す場所です。
 
 公開版で残すべきなのは、private script や実値ではなく、判断構造です。
+watch error も同じで、通知や dashboard 表示だけで終わらせず、heartbeat が一次切り分けへ進める形を残します。
 「どの層を疑うか」「何を evidence とするか」「どこから rollback できるか」「何を公開してはいけないか」を残すだけでも十分価値があります。
 
 ## 方針

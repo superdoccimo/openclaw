@@ -31,6 +31,7 @@ Japanese summaries and operation notes are available in [README.ja.md](README.ja
 - Remote access patterns such as Cloudflare Tunnel and private mesh networks
 - AG-UI dashboard observability and role-specific UI drift
 - Heartbeat insight policy for notification and quiet-decision quality
+- Watch event follow-up loops that turn repeated failures into safe triage
 - Human-readable notifications, daily logs, and sanitized evidence
 
 ## Repository Layout
@@ -55,6 +56,7 @@ docs/
     12-autonomy-enablement.md
     13-ag-ui-dashboard-observability.md
     14-heartbeat-insight-policy.md
+    15-watch-event-follow-up.md
   ja/
     README.md
 examples/
