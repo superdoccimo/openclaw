@@ -33,6 +33,7 @@ Japanese summaries and operation notes are available in [README.ja.md](README.ja
 - Heartbeat insight policy for notification and quiet-decision quality
 - Watch event follow-up loops that turn repeated failures into safe triage
 - Cross-agent consultation for technical ambiguity, browser evidence, and coding-agent handoffs
+- Event store recovery semantics that separate historical errors from unresolved alerts
 - Human-readable notifications, daily logs, and sanitized evidence
 
 ## Repository Layout
@@ -59,6 +60,7 @@ docs/
     14-heartbeat-insight-policy.md
     15-watch-event-follow-up.md
     16-cross-agent-consultation.md
+    17-event-store-recovery-semantics.md
   ja/
     README.md
 examples/

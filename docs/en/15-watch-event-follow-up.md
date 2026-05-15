@@ -114,7 +114,13 @@ Useful fields:
 - `status`: `ok`, `error`, `queued`, `skipped`
 - `summary`: short sanitized human summary
 - `tags`: role and watch category
-- `meta`: compact watch name, status, signature, delivery state
+- `data`: compact watch name, status, signature, delivery state, and a stable
+  recovery subject such as `resolutionKey`
+
+If a later `status=ok` event clears the failure, keep both records. The
+dashboard should alert on unresolved errors, not on the raw historical error
+count. See [Event Store Recovery Semantics](17-event-store-recovery-semantics.md)
+for the matching model.
 
 Avoid storing:
 
@@ -131,6 +137,7 @@ The dashboard should surface recent watch errors, but it should not perform heav
 Good dashboard behavior:
 
 - show the count of recent errors
+- separate unresolved error count from historical error count
 - show the top few sanitized summaries
 - link the error to the relevant role area
 - show whether a heartbeat/system event has been queued

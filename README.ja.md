@@ -20,6 +20,7 @@ OpenClaw 本体の仕様、install、command syntax、正式な config は公式
 
 公開版で残すべきなのは、private script や実値ではなく、判断構造です。
 watch error も同じで、通知や dashboard 表示だけで終わらせず、heartbeat が一次切り分けへ進める形を残します。
+`events.json` の error も、過去履歴と未解決アラートを分けて扱います。復旧済みの古い error を dashboard の赤表示として残し続けると、正常な復旧が失敗に見えてしまいます。
 「どの層を疑うか」「何を evidence とするか」「どこから rollback できるか」「何を公開してはいけないか」を残すだけでも十分価値があります。
 
 ## 方針

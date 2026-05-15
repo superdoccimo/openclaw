@@ -18,6 +18,7 @@
 - heartbeat と安全判定の分離
 - auth profile と gateway restart
 - dashboard 自己DoS
+- events.json の履歴エラーと未解決エラーの分離
 - security agent の境界
 - Node / wrapper / systemd のズレ
 - 技術横断の相談役と browser 証拠、safe handoff

@@ -26,6 +26,11 @@ Inherited defaults are a common source of false negatives. For example, a dashbo
 
 The same problem can happen with review files. If the CLI or scheduler writes `weekly-review-YYYY-MM-DD.md` but the dashboard only searches for `review-YYYY-MM-DD.md`, the review panel will look empty even though the review mechanism is working.
 
+Event stores need the same care. An append-only `events.json` can contain old
+errors after a healthy recovery. A role-specific dashboard should show current
+unresolved errors separately from historical errors, and should make the event
+store path visible enough to catch copied deployment drift.
+
 ## Useful Evidence
 
 The operator should be able to answer these questions without SSHing into the host:
@@ -37,6 +42,8 @@ The operator should be able to answer these questions without SSHing into the ho
 - What heartbeat tasks ran recently?
 - Which durable notes were written most recently?
 - Are recent events empty, queued, skipped, ok, or error?
+- Are event errors current unresolved alerts or historical records already
+  cleared by a recovery event?
 - Is action authentication enabled before exposing the UI beyond loopback?
 
 For a research agent, the most valuable dashboard row is often the durable note row. Chat notifications are pointers. Research notes, backlog entries, state files, and public docs are the reusable output.
@@ -80,6 +87,7 @@ The API response should confirm, at least:
 - gateway health is available
 - action authentication state is visible
 - heartbeat state is readable
+- unresolved and historical event errors are distinguishable
 - note count is non-zero when notes exist
 - the latest note filename matches the agent's actual output directory
 - the latest review filename matches the scheduler's real output convention

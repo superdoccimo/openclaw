@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Add event store recovery semantics for separating historical errors from unresolved alerts.
 - Add watch event follow-up guidance for turning check-only failures into heartbeat triage.
 - Add initial docs-first structure for OpenClaw multi-agent operations.
 - Add public agent naming convention.
