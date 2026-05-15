@@ -20,6 +20,7 @@
 - dashboard 自己DoS
 - security agent の境界
 - Node / wrapper / systemd のズレ
+- 技術横断の相談役と browser 証拠、safe handoff
 - Cloudflare Tunnel や private mesh を含む access layer
 - 公開前の redaction
 

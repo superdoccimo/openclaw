@@ -32,6 +32,7 @@ Japanese summaries and operation notes are available in [README.ja.md](README.ja
 - AG-UI dashboard observability and role-specific UI drift
 - Heartbeat insight policy for notification and quiet-decision quality
 - Watch event follow-up loops that turn repeated failures into safe triage
+- Cross-agent consultation for technical ambiguity, browser evidence, and coding-agent handoffs
 - Human-readable notifications, daily logs, and sanitized evidence
 
 ## Repository Layout
@@ -57,6 +58,7 @@ docs/
     13-ag-ui-dashboard-observability.md
     14-heartbeat-insight-policy.md
     15-watch-event-follow-up.md
+    16-cross-agent-consultation.md
   ja/
     README.md
 examples/
@@ -81,6 +83,7 @@ Private agent names are not used in public docs. Public docs use role-based name
 | `OpenClaw-A` | domain-specific agent |
 | `OpenClaw-Security` | security monitoring agent |
 | `OpenClaw-Research` | OSS research, discovery, upstream change tracking |
+| `OpenClaw-Consult` | cross-agent technical consultation, browser evidence, safe handoff shaping |
 | `Operator` | human operator |
 
 ## Remote Access Policy

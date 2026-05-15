@@ -16,3 +16,4 @@
 - Add Hermes review filename drift as an AG-UI dashboard false-negative pattern.
 - Add equal-standing heartbeat prompt style as an operator field policy.
 - Add heartbeat insight policy notes for notification and quiet-decision review.
+- Add cross-agent consultation guidance for technical ambiguity, browser evidence, and safe coding-agent handoffs.

@@ -14,6 +14,7 @@ When the visible symptom is "OpenClaw is not responding", the actual cause may b
 - a wrapper is pinned to an old Node or OpenClaw CLI
 - tunnel, reverse proxy, or private mesh access is down
 - heartbeat executed, but safety was not actually assessed
+- the issue spans multiple agent roles and no consultation path exists
 
 ## Design Position
 
@@ -32,6 +33,7 @@ When a private script matters, document its purpose and boundaries rather than i
 - people adding dashboards or heartbeat checks to production-like environments
 - people who have seen OAuth, gateway, systemd, Node, or wrapper drift
 - people who want bounded autonomous remediation without leaking secrets or losing rollback paths
+- people whose agents are useful individually but still need a cross-agent consultation path for technical ambiguity
 
 ## Non Goals
 

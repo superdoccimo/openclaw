@@ -2,7 +2,7 @@
 
 このリポジトリは、複数の OpenClaw を長期運用するための非公式フィールドノートです。
 
-OpenClaw 本体のインストール手順ではありません。gateway、heartbeat、auth profile、AG-UI dashboard、systemd、SSH 監視、Hermes / OH 連携、安全な自律修正、daily-log / research log など、実運用で壊れやすい部分を整理します。
+OpenClaw 本体のインストール手順ではありません。gateway、heartbeat、auth profile、AG-UI dashboard、systemd、SSH 監視、Hermes / OH 連携、安全な自律修正、cross-agent consultation、daily-log / research log など、実運用で壊れやすい部分を整理します。
 
 正式な本体ドキュメントは英語です。
 
@@ -38,4 +38,5 @@ watch error も同じで、通知や dashboard 表示だけで終わらせず、
 | `OpenClaw-A` | domain-specific agent |
 | `OpenClaw-Security` | security monitoring agent |
 | `OpenClaw-Research` | OSS 調査、仕様変更追跡 |
+| `OpenClaw-Consult` | 技術横断の相談、browser 証拠、safe handoff |
 | `Operator` | 人間の運用者 |
