@@ -50,6 +50,8 @@ systemctl --user show openclaw-gateway.service -p Environment -p ExecStart
 - after updates, verify wrapper and systemd targets read-only
 - show `expected` and `actual` separately on dashboards
 - treat mismatch as `WARNING`
+- after the new runtime is verified, remove stale inactive Node trees so old
+  OpenClaw installs do not keep appearing as confusing evidence
 
 ## Version-Floating Wrapper Pattern
 
@@ -81,6 +83,60 @@ point is that every entrypoint agrees:
 If one of those paths quietly keeps an old embedded Node tree, an update can
 appear successful in the shell while Hermes, OpenClaw, or a dashboard continues
 to run the old runtime.
+
+## Stale Node Tree Cleanup
+
+After aligning a runtime, old nvm Node installs can become misleading evidence.
+
+This is especially true when an old Node tree still contains a previous global
+OpenClaw install:
+
+```text
+active:
+  /home/operator/.nvm/versions/node/v24.current/lib/node_modules/openclaw
+
+inactive but still present:
+  /home/operator/.nvm/versions/node/v24.old/lib/node_modules/openclaw
+```
+
+A doctor script may correctly report that the active wrapper and gateway are
+aligned, while also listing the old inactive install. That is useful during
+repair, but it becomes noise after the repair is complete.
+
+Before removing old Node trees, check:
+
+```bash
+nvm current
+nvm alias
+command -v node
+command -v openclaw
+systemctl --user show openclaw-gateway.service -p ExecStart -p Environment
+ps aux | grep '/.nvm/versions/node/'
+```
+
+If only the expected Node is active, prefer:
+
+```bash
+nvm uninstall <old-version>
+```
+
+Do not remove the current runtime with `rm -rf`. Use `nvm uninstall` for stale
+versions and keep the active version explicit.
+
+After cleanup, verify:
+
+```bash
+node --version
+npm --version
+nvm current
+nvm alias default
+openclaw --version
+systemctl --user show openclaw-gateway.service -p ActiveState -p SubState
+```
+
+If a dashboard or heartbeat has a Node doctor, it should stop reporting old
+inactive OpenClaw installs after the cleanup. That reduces false concern and
+makes future drift easier to see.
 
 ## Hermes And Browser Tool Checks
 

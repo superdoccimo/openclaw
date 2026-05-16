@@ -20,3 +20,6 @@
 - Add cross-agent consultation guidance for technical ambiguity, browser evidence, and safe coding-agent handoffs.
 - Add browser tooling, Hermes Node-runtime, and remote coding-agent host-control boundaries.
 - Add Camofox-backed Hermes browser-provider guidance and distinguish it from remote desktop access.
+- Add proposal-only coding-agent lab guidance for bounded Markdown proposals from reviews, learning notes, and repeated findings.
+- Add stale nvm Node tree cleanup guidance after OpenClaw wrapper/gateway/default alignment.
+- Add AG-UI dependency update cautions for non-force audit fixes, build-time dev dependencies, and dashboard API verification.

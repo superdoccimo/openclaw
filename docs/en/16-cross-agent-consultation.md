@@ -211,6 +211,22 @@ completion criteria:
 This keeps the coding agent from guessing the operator's intent or repeating
 context gathering that another agent already performed.
 
+A safer implementation is a proposal-only coding-agent lab:
+
+```text
+consultation summary
+  -> sanitized request file
+  -> coding agent read-only run
+  -> proposal Markdown
+  -> heartbeat/review/dashboard visibility
+```
+
+The proposal step should not apply patches, publish repositories, or change
+production configuration. It turns ambiguity into a reviewable artifact. A
+separate owner can later decide whether to implement it.
+
+See [Proposal-Only Coding Agent Lab](19-proposal-only-coding-agent-lab.md).
+
 ## Failure Modes
 
 Watch for these failure modes:

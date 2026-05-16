@@ -77,3 +77,90 @@ systemctl reboot
 ## 公開 docs へ昇格
 
 - `docs/en/18-browser-tooling-and-remote-coding-agents.md`
+
+## 追加で残すべき知見
+
+### proposal-only coding agent lab
+
+Hermes review、daily note、learning note、project backlog から coding agent を呼ぶ場合、いきなり production を変更させるのではなく、まず Markdown proposal を作るだけの lab として扱うと安全だった。
+
+この場合、重要なのは「AI同士が直接勝手に操作する」ことではない。request file、read-only run、proposal file、dashboard visibility という durable artifact の流れにすること。
+
+安全な境界は次の形。
+
+```text
+allowed:
+  sanitized notes を読む
+  improvement proposal を書く
+  OSS idea seed を書く
+  dashboard で見える形にする
+
+not in proposal step:
+  production patch
+  config change
+  public release
+  package publish
+  domain / cloud / external service change
+```
+
+heartbeat には「気が向いたら」「よいsignalがあれば」で十分。quota や義務にすると自律ではなく作業命令になってしまう。
+
+### AG-UI dashboard は新しい artifact も見せる
+
+OpenClaw agent に proposal-only lab を追加した場合、dashboard 側も見える化しないと確認できない。
+
+最低限、次を見るとよい。
+
+- request count
+- proposal count
+- raw log count
+- latest request
+- latest proposal
+- proposal content の短い表示
+
+AG-UI は「画面が表示される」だけでは足りない。agent の現在の責務に合った artifact が読めているかを見る必要がある。
+
+### AG-UI dependency update の罠
+
+`npm audit fix --omit=dev` は、`package.json` に devDependencies が残っていても、`node_modules` から build-time dev dependency を外すことがある。
+
+そのため、既存の standalone build は動いていても、次の `next build` で Tailwind / PostCSS / TypeScript 周辺が見つからず失敗することがある。
+
+dependency update の順番は次が安全。
+
+```text
+npm outdated
+low-risk patch/minor update
+npm audit without force
+npm run build
+restart service
+dashboard API check
+```
+
+`npm audit fix --force` が古い major への downgrade を提案したら止める。audit の赤表示を消すために framework を壊す方が危険。
+
+### 古い nvm Node tree は最後に消す
+
+Node / OpenClaw wrapper / gateway / systemd が揃ったあと、古い nvm Node tree が残っていると、doctor や heartbeat が inactive OpenClaw を見つけて混乱する。
+
+ただし、削除前に次を確認する。
+
+```text
+current node
+nvm default
+systemd ExecStart / Environment
+running process
+OpenClaw doctor
+AG-UI service
+```
+
+動作中が新しい Node だけなら、`rm -rf` ではなく `nvm uninstall` で古い version を消すのがよい。
+
+削除後は Node doctor、OpenClaw gateway、AG-UI dashboard API を確認する。
+
+## 追加で公開 docs へ昇格
+
+- `docs/en/06-node-wrapper-alignment.md`
+- `docs/en/13-ag-ui-dashboard-observability.md`
+- `docs/en/16-cross-agent-consultation.md`
+- `docs/en/19-proposal-only-coding-agent-lab.md`

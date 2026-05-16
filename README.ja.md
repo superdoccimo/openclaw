@@ -19,6 +19,7 @@ OpenClaw 本体の仕様、install、command syntax、正式な config は公式
 複数 OpenClaw を実際に動かした時に起きる、auth、gateway、AG-UI dashboard、heartbeat、systemd、Node wrapper、remote access、redaction などの切り分け知見を残す場所です。
 Hermes に browser tool を足せる場合でも、それが Hermes 本体に同梱されているのか、npm package や Camofox のような browser provider として追加されたものなのか、PATH や Node wrapper がどこを向いているのかを分けて確認します。
 RustDesk、VNC、noVNC のような remote desktop は人間がログイン状態を作る入口であり、browser provider は agent が evidence を取る入口です。この2つを同じ権限として扱わないことも大事です。
+Hermes や review queue から coding agent へつなぐ場合も、いきなり production を変更するのではなく、sanitized request から Markdown proposal を作るだけの proposal-only lab として扱うと安全に知見を増やせます。
 
 公開版で残すべきなのは、private script や実値ではなく、判断構造です。
 watch error も同じで、通知や dashboard 表示だけで終わらせず、heartbeat が一次切り分けへ進める形を残します。

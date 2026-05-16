@@ -35,6 +35,8 @@ Japanese summaries and operation notes are available in [README.ja.md](README.ja
 - Cross-agent consultation for technical ambiguity, browser evidence, and coding-agent handoffs
 - Event store recovery semantics that separate historical errors from unresolved alerts
 - Browser tooling and remote coding-agent boundaries for Hermes-style browser providers, Camofox-style adapters, Node alignment, and host-control safety
+- Proposal-only coding-agent labs for turning reviews, learning notes, and
+  repeated findings into bounded Markdown proposals
 - Human-readable notifications, daily logs, and sanitized evidence
 
 ## Repository Layout
@@ -63,6 +65,7 @@ docs/
     16-cross-agent-consultation.md
     17-event-store-recovery-semantics.md
     18-browser-tooling-and-remote-coding-agents.md
+    19-proposal-only-coding-agent-lab.md
   ja/
     README.md
 examples/

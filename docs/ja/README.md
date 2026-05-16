@@ -24,6 +24,7 @@
 - Hermes / browser provider / Camofox adapter / Node runtime のズレ
 - RustDesk / VNC / noVNC のような人間用 remote desktop と agent 用 browser provider の境界
 - remote coding agent が host-control command を実行できる境界
+- Hermes / review / learning note から coding agent に渡す proposal-only lab
 - 技術横断の相談役と browser 証拠、safe handoff
 - Cloudflare Tunnel や private mesh を含む access layer
 - 公開前の redaction

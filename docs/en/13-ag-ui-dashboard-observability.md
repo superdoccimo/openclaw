@@ -48,6 +48,21 @@ The operator should be able to answer these questions without SSHing into the ho
 
 For a research agent, the most valuable dashboard row is often the durable note row. Chat notifications are pointers. Research notes, backlog entries, state files, and public docs are the reusable output.
 
+For a security or maintenance agent, proposal artifacts can be just as
+important. If a heartbeat or review can create proposal-only coding-agent
+requests, the dashboard should show those artifacts too:
+
+- request count
+- proposal count
+- raw run-log count, if retained
+- latest request path
+- latest proposal path
+- last checked time
+- a short rendering of the latest proposal
+
+Otherwise the operator cannot distinguish "the lab is idle" from "the lab is
+working but invisible."
+
 ## Service Environment
 
 When running a Next.js dashboard under user systemd, keep the service environment explicit.
@@ -64,6 +79,42 @@ Record these values in the service or environment file:
 The `PATH` entry matters. A command may work in an interactive shell and fail under systemd if it relies on `env node`, nvm, or a user-local binary.
 
 Public frontend variables such as `NEXT_PUBLIC_*` are baked into the built client. Rebuild and restart after changing labels, titles, or other public UI defaults.
+
+## Dependency Update Boundary
+
+AG-UI dashboards often sit on Next.js, CopilotKit, Tailwind, Hono, and other
+fast-moving packages. Treat dependency updates as an operational change, not as
+a blind cleanup.
+
+Safe update sequence:
+
+```text
+check outdated packages
+update low-risk patch/minor dependencies first
+run audit without force
+build
+restart the user service
+query the dashboard API
+record remaining advisories separately
+```
+
+Avoid running forceful audit fixes that downgrade or cross major framework
+versions. If an audit tool proposes a surprising framework downgrade, that is a
+signal to stop and review the dependency tree, not permission to apply it.
+
+Also watch for this trap:
+
+```text
+npm audit fix --omit=dev
+```
+
+It can remove build-time development dependencies from `node_modules` while
+leaving `package.json` unchanged. The service may keep running from an existing
+standalone build, but the next `next build` can fail because PostCSS, Tailwind,
+TypeScript, or other build tools are missing.
+
+After any audit fix, run a real build before restarting production-like
+services.
 
 ## Access Boundary
 
@@ -93,6 +144,11 @@ The API response should confirm, at least:
 - the latest review filename matches the scheduler's real output convention
 
 If the UI is healthy but the evidence is empty, suspect a role mismatch before suspecting the agent.
+
+If the API returns only an auth error or a minimal error object, verify the
+request first. A missing or malformed dashboard action token can look like a
+server-side data failure. Check authentication before debugging the evidence
+collectors.
 
 ## Publication Boundary
 
