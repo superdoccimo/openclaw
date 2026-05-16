@@ -25,6 +25,7 @@
 - RustDesk / VNC / noVNC のような人間用 remote desktop と agent 用 browser provider の境界
 - remote coding agent が host-control command を実行できる境界
 - Hermes / review / learning note から coding agent に渡す proposal-only lab
+- NotebookLM 向け source pack 作成と CLI upload / 人間GUI判断の分担
 - 技術横断の相談役と browser 証拠、safe handoff
 - Cloudflare Tunnel や private mesh を含む access layer
 - 公開前の redaction
