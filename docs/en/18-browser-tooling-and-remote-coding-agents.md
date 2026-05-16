@@ -65,6 +65,57 @@ When enabling the feature, record:
 The practical lesson is that a successful Hermes install is not the same thing
 as a verified browser-evidence path.
 
+## Camofox-Backed Hermes Pattern
+
+One useful pattern is to run a browser provider such as `camofox-browser` as a
+local service, then point Hermes at that service with an environment variable
+such as `CAMOFOX_URL=http://127.0.0.1:9377`.
+
+This changes the operational model. A CLI-only host does not need a full desktop
+session before the agent can gather browser evidence. It needs:
+
+- a browser-provider service that is running and health-checked
+- Hermes configured to route browser calls to that provider
+- a persistent browser profile when login state matters
+- an operator-controlled way to create or refresh login state
+
+The useful discovery is that browser capability can be added as an adapter
+layer. It is not necessarily tied to the agent's own installation, the SSH
+session, or a visible desktop.
+
+Verify the adapter path explicitly:
+
+```bash
+systemctl --user status camofox-browser.service
+curl -sS http://127.0.0.1:9377/health
+hermes doctor
+```
+
+The provider health check and Hermes tool availability are separate signals.
+Both should be recorded.
+
+## Remote Desktop Is Not The Same Capability
+
+Remote desktop tools, VNC, and noVNC are useful, but they solve a different
+problem from browser-provider adapters.
+
+| Capability | Primary use |
+| --- | --- |
+| browser provider | agent gathers browser evidence or runs bounded browser tasks |
+| noVNC / VNC | operator completes login or watches a browser session on a headless host |
+| remote desktop | operator controls a real desktop host and prepares profiles |
+
+A desktop host can be an excellent browser worker because the operator can log
+in normally and keep the profile healthy. But that does not by itself grant an
+agent safe permission to click publish, change billing, export cookies, or alter
+account settings.
+
+Keep these boundaries separate:
+
+- remote desktop access prepares or repairs the human login state
+- browser-provider adapters let agents gather evidence and run bounded tasks
+- risky GUI actions still need the same approval boundary as other risky tools
+
 ## Node Runtime Boundary
 
 Browser tools often add another Node/npm surface to a deployment. That can
@@ -149,6 +200,7 @@ layers that OpenClaw agents cannot always see from text alone.
 Keep the boundary explicit:
 
 - browser tools gather evidence first
+- browser providers and remote desktop tools are different layers
 - OpenClaw agents separate execution status from safety status
 - coding agents receive narrow implementation requests
 - host-control commands require explicit approval and an audit note

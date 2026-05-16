@@ -19,3 +19,4 @@
 - Add heartbeat insight policy notes for notification and quiet-decision review.
 - Add cross-agent consultation guidance for technical ambiguity, browser evidence, and safe coding-agent handoffs.
 - Add browser tooling, Hermes Node-runtime, and remote coding-agent host-control boundaries.
+- Add Camofox-backed Hermes browser-provider guidance and distinguish it from remote desktop access.

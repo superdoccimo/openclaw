@@ -21,7 +21,8 @@
 - events.json の履歴エラーと未解決エラーの分離
 - security agent の境界
 - Node / wrapper / systemd のズレ
-- Hermes / browser tool / Node runtime のズレ
+- Hermes / browser provider / Camofox adapter / Node runtime のズレ
+- RustDesk / VNC / noVNC のような人間用 remote desktop と agent 用 browser provider の境界
 - remote coding agent が host-control command を実行できる境界
 - 技術横断の相談役と browser 証拠、safe handoff
 - Cloudflare Tunnel や private mesh を含む access layer

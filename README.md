@@ -34,7 +34,7 @@ Japanese summaries and operation notes are available in [README.ja.md](README.ja
 - Watch event follow-up loops that turn repeated failures into safe triage
 - Cross-agent consultation for technical ambiguity, browser evidence, and coding-agent handoffs
 - Event store recovery semantics that separate historical errors from unresolved alerts
-- Browser tooling and remote coding-agent boundaries for Hermes-style browser tools, Node alignment, and host-control safety
+- Browser tooling and remote coding-agent boundaries for Hermes-style browser providers, Camofox-style adapters, Node alignment, and host-control safety
 - Human-readable notifications, daily logs, and sanitized evidence
 
 ## Repository Layout
