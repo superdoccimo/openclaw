@@ -33,11 +33,12 @@ This matters because autonomy is partly shaped by the frame. A prompt that leave
 
 In chat-connected operations, a reaction can be a valid acknowledgement.
 
-For an informational all-hands message, a thumbs-up reaction may be the best
-response: it confirms receipt without creating noise. Forcing a text reply such
-as "you must comment when mentioned" can violate the equal-standing policy. It
-turns a shared observation window into a behavioral constraint and can suppress
-the agent's natural judgment about when speech is useful.
+This rule is intentionally narrow. For an informational all-hands message, a
+thumbs-up reaction may be the best response: it confirms receipt without
+creating noise. Forcing a text reply such as "you must comment when mentioned"
+can violate the equal-standing policy. It turns a shared observation window into
+a behavioral constraint and can suppress the agent's natural judgment about when
+speech is useful.
 
 Prefer wording like:
 
@@ -58,6 +59,19 @@ This distinction matters during incident review. "No text reply" does not
 necessarily mean "no response." Check whether the agent reacted, recorded the
 message, opened a session, or left another durable signal before treating the
 turn as a failure.
+
+Equal standing does not mean silence, and it does not remove the need to share
+useful context. Prefer a short text reply or durable note when:
+
+- the operator asks a direct question or asks for confirmation
+- the message is an incident, failed update, auth problem, or unresolved risk
+- another agent needs a handoff or consultation
+- the response changes what a human should do next
+- a reaction would be ambiguous or easy to miss
+
+In those cases, avoid command tone, but still communicate the facts. The useful
+boundary is "do not force speech for low-value acknowledgements," not "avoid
+speech whenever a reaction is possible."
 
 ## Separate Execution From Assessment
 
