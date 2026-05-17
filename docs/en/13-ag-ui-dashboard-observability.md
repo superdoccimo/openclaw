@@ -21,6 +21,8 @@ At minimum, make these inputs role-specific:
 - note label shown in the UI
 - command paths used by the service environment
 - action authentication policy
+- optional tool visibility, such as whether OpenHarness/OH is part of that
+  agent's actual operating model
 
 Inherited defaults are a common source of false negatives. For example, a dashboard can say there are no daily notes simply because it is still reading a security agent's `daily-log` directory while the research agent writes to `research/`.
 
@@ -30,6 +32,38 @@ Event stores need the same care. An append-only `events.json` can contain old
 errors after a healthy recovery. A role-specific dashboard should show current
 unresolved errors separately from historical errors, and should make the event
 store path visible enough to catch copied deployment drift.
+
+Optional tools should not become permanent red warnings. If an agent does not
+use OpenHarness, a dashboard should be able to hide the OH panel and skip the OH
+CLI probe instead of repeatedly reporting `oh` as missing. A missing optional
+tool is not an incident if the role has a different approved workflow.
+
+Use configuration flags for this rather than local source forks, for example:
+
+```text
+AGUI_OPENHARNESS_ENABLED=false
+```
+
+The same pattern applies to any role-specific integration. Disable unsupported
+evidence collectors explicitly, then keep the rest of the dashboard generic and
+updateable.
+
+## Updateable Deployment Shape
+
+A copied dashboard working tree is easy to customize once and hard to update
+later. Prefer a clean reusable-app checkout plus local-only configuration:
+
+```text
+origin: reusable dashboard repository
+upstream: official AG-UI repository
+local .env: agent label, event paths, optional integrations, command paths
+systemd unit: port, host binding, service environment
+```
+
+Generic improvements should land in the reusable dashboard repository. Host
+specific values should stay in ignored environment files and service units.
+This lets official AG-UI changes be reviewed and pulled forward without mixing
+private machine state into the app source.
 
 ## Useful Evidence
 

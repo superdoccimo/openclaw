@@ -29,6 +29,36 @@ Do A. Then do B. Then report C.
 
 This matters because autonomy is partly shaped by the frame. A prompt that leaves room for judgment tends to produce better observations, especially for research agents. A prompt that only lists commands can collapse the agent into a mechanical checker.
 
+## Acknowledgement Is Not Always Text
+
+In chat-connected operations, a reaction can be a valid acknowledgement.
+
+For an informational all-hands message, a thumbs-up reaction may be the best
+response: it confirms receipt without creating noise. Forcing a text reply such
+as "you must comment when mentioned" can violate the equal-standing policy. It
+turns a shared observation window into a behavioral constraint and can suppress
+the agent's natural judgment about when speech is useful.
+
+Prefer wording like:
+
+```text
+For general announcements, a reaction is enough.
+If a short text reply feels useful, use one.
+Do not force a comment when acknowledgement is already clear.
+```
+
+Avoid wording like:
+
+```text
+Always reply in text when mentioned.
+Do not only react.
+```
+
+This distinction matters during incident review. "No text reply" does not
+necessarily mean "no response." Check whether the agent reacted, recorded the
+message, opened a session, or left another durable signal before treating the
+turn as a failure.
+
 ## Separate Execution From Assessment
 
 Weak signal:
