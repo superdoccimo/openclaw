@@ -38,6 +38,12 @@ use OpenHarness, a dashboard should be able to hide the OH panel and skip the OH
 CLI probe instead of repeatedly reporting `oh` as missing. A missing optional
 tool is not an incident if the role has a different approved workflow.
 
+This should not be used to hide a real operating surface. If a tool, channel,
+event store, note directory, or auth provider is part of the agent's actual
+workflow, absence or stale evidence should remain visible. Role-specific
+configuration is a way to remove irrelevant probes, not a way to make the
+dashboard quiet.
+
 Use configuration flags for this rather than local source forks, for example:
 
 ```text
