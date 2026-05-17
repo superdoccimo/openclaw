@@ -39,6 +39,8 @@ Japanese summaries and operation notes are available in [README.ja.md](README.ja
   repeated findings into bounded Markdown proposals
 - NotebookLM source-pack handoffs for using CLI upload adapters while keeping
   brittle artifact-generation UI actions with the operator
+- Duty desk ticket bridges for turning unresolved cross-agent consultations
+  into local tickets, risk labels, handoff drafts, and human-review holds
 - Human-readable notifications, daily logs, and sanitized evidence
 
 ## Repository Layout
@@ -69,6 +71,7 @@ docs/
     18-browser-tooling-and-remote-coding-agents.md
     19-proposal-only-coding-agent-lab.md
     20-notebooklm-source-pack-handoff.md
+    21-duty-desk-ticket-bridge.md
   ja/
     README.md
 examples/
