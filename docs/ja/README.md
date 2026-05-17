@@ -27,6 +27,7 @@
 - Hermes / review / learning note から coding agent に渡す proposal-only lab
 - NotebookLM 向け source pack 作成と CLI upload / 人間GUI判断の分担
 - 未解決相談を local ticket、risk、status、handoff、human-review に変換する duty desk ticket bridge
+- 複数PCから同じ知見repoへ追記する時の fetch / diff / fast-forward 境界
 - 技術横断の相談役と browser 証拠、safe handoff
 - Cloudflare Tunnel や private mesh を含む access layer
 - 公開前の redaction

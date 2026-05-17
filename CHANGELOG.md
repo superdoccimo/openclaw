@@ -25,3 +25,4 @@
 - Add duty desk ticket bridge guidance for turning unresolved cross-agent consultations into local tickets, handoff drafts, and human-review holds.
 - Add stale nvm Node tree cleanup guidance after OpenClaw wrapper/gateway/default alignment.
 - Add AG-UI dependency update cautions for non-force audit fixes, build-time dev dependencies, and dashboard API verification.
+- Add multi-PC knowledge synchronization guidance for checking remote diffs before adding daily notes or stable docs.

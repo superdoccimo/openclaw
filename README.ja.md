@@ -4,6 +4,8 @@
 
 OpenClaw 本体のインストール手順ではありません。gateway、heartbeat、auth profile、AG-UI dashboard、systemd、SSH 監視、Hermes / OH 連携、browser tool、安全な自律修正、cross-agent consultation、daily-log / research log など、実運用で壊れやすい部分を整理します。
 
+複数PCから同じ repo に知見を書く場合は、ローカル clone で `fetch` して差分を見てから追記する運用を重視します。PC固有の `.codex/skills` はそのまま公開せず、判断構造だけを docs / daily note に抽象化します。
+
 正式な本体ドキュメントは英語です。
 
 - 英語の入口: [README.md](README.md)

@@ -41,6 +41,8 @@ Japanese summaries and operation notes are available in [README.ja.md](README.ja
   brittle artifact-generation UI actions with the operator
 - Duty desk ticket bridges for turning unresolved cross-agent consultations
   into local tickets, risk labels, handoff drafts, and human-review holds
+- Multi-PC knowledge synchronization for keeping daily notes and stable docs
+  coherent when several machines write into the same repository
 - Human-readable notifications, daily logs, and sanitized evidence
 
 ## Repository Layout
@@ -72,6 +74,7 @@ docs/
     19-proposal-only-coding-agent-lab.md
     20-notebooklm-source-pack-handoff.md
     21-duty-desk-ticket-bridge.md
+    22-multi-pc-knowledge-sync.md
   ja/
     README.md
 examples/
