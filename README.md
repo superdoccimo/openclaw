@@ -45,6 +45,9 @@ Japanese summaries and operation notes are available in [README.ja.md](README.ja
   coherent when several machines write into the same repository
 - Hermes back-office and gateway boundaries for keeping OpenClaw as the primary
   chat surface while Hermes produces reviews, memory, kanban, and proposals
+- Diagnostic environment checks for separating Hermes config-file ownership,
+  user service environment, and ambient shell variables when investigating
+  shared chat-token risks
 - Human-readable notifications, daily logs, and sanitized evidence
 
 ## Repository Layout

@@ -129,6 +129,95 @@ Is it doing useful work for this agent role?
 A running gateway with zero active jobs is not the same problem as a stopped
 gateway.
 
+## Ambient Environment Can Pollute CLI Status
+
+Another misleading state is an ambient environment variable in the operator or
+coding-agent shell.
+
+For example, a CLI command may report that Hermes has a messaging platform
+configured because the current shell contains a bot token, even after the
+Hermes configuration file and user service environment no longer contain that
+token.
+
+That is not the same as Hermes owning the production chat gateway.
+
+Separate these three sources:
+
+| Source | What it proves |
+| --- | --- |
+| Hermes config files | what Hermes would normally load from its home directory |
+| user service environment | what the running Hermes gateway process receives |
+| current shell environment | what an ad-hoc diagnostic command may inherit |
+
+Run diagnostic commands with messaging variables removed when the question is
+"does Hermes itself own this gateway?"
+
+```text
+sanitized diagnostic shell
+  -> remove chat-token environment variables
+  -> run Hermes status
+  -> compare with service environment and gateway logs
+```
+
+If the sanitized command reports messaging disabled, the service environment has
+no messaging token, and recent gateway logs say no messaging platform is
+enabled, then the remaining unsanitized CLI "configured" result is a diagnostic
+environment problem, not gateway ownership.
+
+## Token Ownership Health Check
+
+Dashboards and heartbeat helpers should expose a token ownership summary without
+printing token values.
+
+Useful booleans:
+
+- Hermes has Discord token in its own config.
+- OpenClaw has Discord token in its own config.
+- Hermes and OpenClaw have the same Discord token.
+- Hermes gateway service environment contains a messaging token.
+- The diagnostic shell contains a messaging token.
+- Telegram or other chat platforms have the same ownership problem.
+
+The exact credential value should never appear in logs, dashboard payloads,
+daily notes, or public docs. The useful signal is ownership and equality, not
+the token.
+
+When the intended boundary is "OpenClaw owns chat, Hermes owns review," the
+healthy state is:
+
+```text
+OpenClaw chat token: present
+Hermes chat token: absent
+same-token check: false
+Hermes service messaging env: absent
+Hermes review jobs: present
+```
+
+## Review Button Is Part Of The Integration
+
+A dashboard button labeled "run Hermes review" is only real integration if it
+points at an actual Hermes review job.
+
+Common partial state:
+
+```text
+dashboard has review UI
+Hermes has no active review cron job
+dashboard env has no review job id
+latest review artifact is old
+```
+
+This is not a UI bug by itself. It means the back-office bridge has not been
+wired yet.
+
+Verification should include:
+
+- a real local review job exists
+- the dashboard environment points to that job
+- the job uses local delivery or another intentionally bounded target
+- the wrapper removes ambient chat tokens before running
+- the latest request or observation artifact is visible in the dashboard
+
 ## Dashboard Implications
 
 The dashboard should show Hermes as a back-office worker, not only as a chat
@@ -138,6 +227,7 @@ Useful fields:
 
 - scheduler running or stopped
 - active cron job count
+- token ownership booleans without token values
 - latest review artifact path
 - latest review artifact timestamp
 - kanban item count
@@ -171,7 +261,12 @@ Before treating the integration as healthy, verify:
 - OpenClaw owns the active chat gateway for the relevant channel.
 - Hermes messaging integrations are either deliberately disabled or use separate
   identities.
+- Sanitized Hermes status does not depend on chat tokens inherited from the
+  diagnostic shell.
+- The Hermes gateway service environment does not contain the shared chat token.
 - Hermes has at least one useful back-office job or review path.
+- The dashboard review action points at a real local Hermes job if such a button
+  is present.
 - The latest Hermes artifact is visible in the dashboard.
 - Sandbox CLI output is not the only evidence for service state.
 - No secrets, channel IDs, hostnames, or raw production logs are copied into

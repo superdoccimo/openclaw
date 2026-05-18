@@ -25,6 +25,7 @@ Hermes や review queue から coding agent へつなぐ場合も、いきなり
 NotebookLM のような厳格な Google 系 UI は、browser automation で全部触ろうとするより、source pack を作って CLI adapter で投入し、生成 button や最終判断は人間が担当する方が安定します。
 他 agent からの未解決相談は、会話だけで流さず duty desk ticket bridge に落とすと、risk、status、handoff、human-review の境界を残せます。heartbeat には長い手順を書かず、短い参照だけを置く方が安全です。
 Hermes は OpenClaw と同じ chat gateway を奪い合うのではなく、まず review、memory、kanban、proposal、weekly review material を作る back-office として使うと境界が明確になります。OpenClaw が通知・chat を担当し、Hermes が local artifact を作り、dashboard がそれを見せる形なら、外部通知を増やさずに連携の価値を確認できます。
+この時、手元の shell に chat token が残っていると Hermes の手動 status だけが configured に見えることがあります。config file、user service environment、ambient shell environment を分けて見ると、OpenClaw と Hermes が本当に同じ gateway を奪い合っているのか、診断環境だけの false positive なのかを切り分けられます。
 
 公開版で残すべきなのは、private script や実値ではなく、判断構造です。
 watch error も同じで、通知や dashboard 表示だけで終わらせず、heartbeat が一次切り分けへ進める形を残します。

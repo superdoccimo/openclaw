@@ -29,6 +29,7 @@
 - 未解決相談を local ticket、risk、status、handoff、human-review に変換する duty desk ticket bridge
 - 複数PCから同じ知見repoへ追記する時の fetch / diff / fast-forward 境界
 - OpenClaw を chat gateway、Hermes を review / memory / kanban / proposal の back-office として分ける境界
+- Hermes の config file、user service environment、ambient shell environment を分けて見る診断境界
 - 技術横断の相談役と browser 証拠、safe handoff
 - Cloudflare Tunnel や private mesh を含む access layer
 - 公開前の redaction
