@@ -26,3 +26,4 @@
 - Add stale nvm Node tree cleanup guidance after OpenClaw wrapper/gateway/default alignment.
 - Add AG-UI dependency update cautions for non-force audit fixes, build-time dev dependencies, and dashboard API verification.
 - Add multi-PC knowledge synchronization guidance for checking remote diffs before adding daily notes or stable docs.
+- Add Hermes back-office and gateway boundary guidance for avoiding shared chat ownership while using Hermes for reviews, memory, kanban, and proposals.

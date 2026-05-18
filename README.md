@@ -43,6 +43,8 @@ Japanese summaries and operation notes are available in [README.ja.md](README.ja
   into local tickets, risk labels, handoff drafts, and human-review holds
 - Multi-PC knowledge synchronization for keeping daily notes and stable docs
   coherent when several machines write into the same repository
+- Hermes back-office and gateway boundaries for keeping OpenClaw as the primary
+  chat surface while Hermes produces reviews, memory, kanban, and proposals
 - Human-readable notifications, daily logs, and sanitized evidence
 
 ## Repository Layout
@@ -75,6 +77,7 @@ docs/
     20-notebooklm-source-pack-handoff.md
     21-duty-desk-ticket-bridge.md
     22-multi-pc-knowledge-sync.md
+    23-hermes-backoffice-gateway-boundary.md
   ja/
     README.md
 examples/
